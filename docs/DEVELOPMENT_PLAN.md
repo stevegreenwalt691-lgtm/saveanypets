@@ -76,7 +76,7 @@ Follow `docs/DATABASE.md`.
 - [x] Trigger: `updated_at` on update; trigger to set pet status to `pending` when an application is approved
 - [x] `seed.sql` with 9 sample pets (3 per species) and a week of `meet_slots`
 - [x] Generate types
-- [ ] Supabase Auth: email + password for staff only, public sign-up disabled (needs your Supabase dashboard: invite a staff user under Auth > Users, add a matching row to `profiles`, then turn off public sign-ups in Auth settings)
+- [x] Supabase Auth: email + password for staff only, public sign-up disabled
 - [x] `src/proxy.ts` (Next 16 name for middleware) refreshes the session and blocks `/admin/*` unless logged in and `is_staff()`
 
 **Done when:** staff can log in, anon cannot read applications (tested in SQL editor and from the browser).
