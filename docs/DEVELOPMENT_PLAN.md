@@ -70,14 +70,14 @@ Build from `docs/DESIGN.md` and the "Glass UI" prototype.
 
 Follow `docs/DATABASE.md`.
 
-- [ ] Migrations: enums, `profiles`, `pets`, `pet_photos`, `applications`, `meet_slots`, `care_guides`, `success_stories`, `people_signups`, `surrenders`, `site_settings`
-- [ ] `is_staff()` helper and RLS policies on every table
-- [ ] Storage buckets: `pet-photos` (public read), `story-photos` (public read), staff write only
-- [ ] Trigger: `updated_at` on update; trigger to set pet status to `pending` when an application is approved
-- [ ] `seed.sql` with 9 sample pets (3 per species)
-- [ ] Generate types
-- [ ] Supabase Auth: email + password for staff only, public sign-up disabled
-- [ ] `src/proxy.ts` (Next 16 name for middleware) refreshes the session and blocks `/admin/*` unless logged in and `is_staff()`
+- [x] Migrations: enums, `profiles`, `pets`, `pet_photos`, `applications`, `meet_slots`, `care_guides`, `success_stories`, `people_signups`, `surrenders`, `site_settings`
+- [x] `is_staff()` helper and RLS policies on every table
+- [x] Storage buckets: `pet-photos` (public read), `story-photos` (public read), staff write only
+- [x] Trigger: `updated_at` on update; trigger to set pet status to `pending` when an application is approved
+- [x] `seed.sql` with 9 sample pets (3 per species) and a week of `meet_slots`
+- [x] Generate types
+- [ ] Supabase Auth: email + password for staff only, public sign-up disabled (needs your Supabase dashboard: invite a staff user under Auth > Users, add a matching row to `profiles`, then turn off public sign-ups in Auth settings)
+- [x] `src/proxy.ts` (Next 16 name for middleware) refreshes the session and blocks `/admin/*` unless logged in and `is_staff()`
 
 **Done when:** staff can log in, anon cannot read applications (tested in SQL editor and from the browser).
 
