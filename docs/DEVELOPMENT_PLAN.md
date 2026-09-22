@@ -85,11 +85,11 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 3: Browse pets and pet profiles
 
-- [ ] `/` Home: hero, quick search (species + age, submits to `/adopt`), 4 featured pets, steps, care guide cards, get involved cards
-- [ ] `/adopt`: species chips, filter sidebar (age, size, sex, good with), sort, pagination (12 per page), empty state; filters stored in URL params
-- [ ] `/adopt/[slug]`: gallery with thumbnails, facts grid, personality tags, health checklist, "what they need at home" (species specific), fee box, Apply button, status banner if pending
-- [ ] Favourites: heart on each card saved in `localStorage`, `/favorites` page
-- [ ] Mobile: filters open in a bottom sheet
+- [x] `/` Home: hero, quick search (species + age, submits to `/adopt`), 4 featured pets, steps, care guide cards, get involved cards
+- [x] `/adopt`: species chips, filter sidebar (age, size, sex, good with), sort, pagination (12 per page), empty state; filters stored in URL params
+- [x] `/adopt/[slug]`: gallery placeholder (no real photos yet), facts grid, personality tags, health checklist, "what they need at home" (species specific), fee box, Apply button, status banner if pending
+- [x] Favourites: heart on each card saved in `localStorage`, `/favorites` page
+- [x] Mobile: filters open in a bottom sheet
 
 **Done when:** a visitor can filter to "Bearded Dragons, young" and open a profile, all from real Supabase data.
 

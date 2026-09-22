@@ -8,6 +8,7 @@ import { Chip } from "@/components/ui/Chip";
 import { SpeciesTag } from "@/components/ui/SpeciesTag";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
+import { Checkbox } from "@/components/ui/Checkbox";
 import { Stepper } from "@/components/ui/Stepper";
 import { StatusPill } from "@/components/ui/StatusPill";
 
@@ -153,6 +154,11 @@ export default function StyleguidePage() {
               <option value="cat">Cat</option>
               <option value="bearded_dragon">Bearded Dragon</option>
             </Select>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-5">
+            <Checkbox label="Good with kids" defaultChecked />
+            <Checkbox label="Good with dogs" />
+            <Checkbox label="Good with cats" />
           </div>
         </Section>
 
