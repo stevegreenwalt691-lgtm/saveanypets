@@ -30,7 +30,7 @@ Total MVP: about 4 weeks of focused work.
 - [x] Scaffold Next.js 16 app (TypeScript, Tailwind, ESLint, App Router, `src/`)
 - [x] Add `CLAUDE.md`, `docs/`, `.claude/skills/`, `scripts/`
 - [x] Add dependencies and `typecheck` / `check:copy` scripts to `package.json`
-- [ ] `npm install` on your machine, then `npm run dev`
+- [x] `npm install` on your machine, then `npm run dev`
 - [ ] Create GitHub repo `saveanypets` and push
 - [ ] Create Supabase project (region closest to users), note URL and anon key
 - [ ] `npx supabase init` and `npx supabase link --project-ref YOUR_PROJECT_REF`
@@ -56,11 +56,11 @@ NEXT_PUBLIC_SITE_URL=
 
 Build from `docs/DESIGN.md` and the "Glass UI" prototype.
 
-- [ ] Tokens in `globals.css` (`@theme` block): colours, radii, shadows, fonts (Fraunces + DM Sans via `next/font`)
-- [ ] `BlobBackground` (fixed, blurred colour blobs, respects `prefers-reduced-motion`)
-- [ ] UI kit: `GlassCard`, `Button` (primary, dark, outline, ghost), `Chip`, `SpeciesTag`, `Input`, `Select`, `Textarea`, `Checkbox`, `Stepper`, `StatusPill`
-- [ ] `SiteHeader` (sticky glass pill nav, mobile sheet menu), `SiteFooter`
-- [ ] A hidden `/styleguide` page showing every component (delete or protect before launch)
+- [x] Tokens in `globals.css` (`@theme` block): colours, radii, shadows, fonts (Fraunces + DM Sans via `next/font`)
+- [x] `BlobBackground` (fixed, blurred colour blobs, respects `prefers-reduced-motion`)
+- [ ] UI kit: `GlassCard`, `Button` (primary, dark, outline, ghost), `Chip`, `SpeciesTag`, `Input`, `Select`, `Textarea`, `Checkbox`, `Stepper`, `StatusPill` (built: everything except `Textarea` and `Checkbox`, still to add when the forms in Phase 4 need them)
+- [x] `SiteHeader` (sticky glass pill nav, mobile sheet menu), `SiteFooter`
+- [x] A hidden `/styleguide` page showing every component (delete or protect before launch)
 
 **Done when:** the style guide matches the prototype on desktop and mobile.
 

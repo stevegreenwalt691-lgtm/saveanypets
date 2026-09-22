@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* surfaces */
+  --color-cream: #fbf1e6; /* page background */
+  --color-cream-admin: #f6ede4; /* admin background */
+  --color-ink: #2b211b; /* main text, dark buttons */
+  --color-ink-2: #4d3d33; /* body text */
+  --color-ink-3: #6b5547; /* captions, labels (min 14px) */
+
+  /* brand */
+  --color-brand: #a8461f; /* terracotta: primary buttons, links */
+  --color-brand-hover: #8f3d20;
+  --color-brand-tint: #fde3d6;
+
+  /* species */
+  --color-dog: #a8461f;
+  --color-dog-tint: #fde3d6;
+  --color-dog-photo: #f2cdb4;
+  --color-cat: #6d4596;
+  --color-cat-tint: #efe4fa;
+  --color-cat-photo: #e3d4f0;
+  --color-dragon: #2f6b4f;
+  --color-dragon-tint: #dff0e2;
+  --color-dragon-photo: #cfe6d3;
+
+  /* status */
+  --color-success: #2f6b4f;
+  --color-warning: #9a6200;
+  --color-danger: #b42318;
+  --color-neutral-tint: #ece7e3;
+
+  /* background blobs */
+  --color-blob-coral: #f0906a;
+  --color-blob-sage: #9cc5a1;
+  --color-blob-lilac: #c9b6e4;
+  --color-blob-peach: #f7b98b;
+
+  /* type */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* radius */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* shadow */
+  --shadow-glass: 0 8px 32px rgba(120, 60, 30, 0.1);
+  --shadow-glass-lg: 0 12px 40px rgba(120, 60, 30, 0.16);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility glass {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-glass);
+}
+@utility glass-strong {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-glass-lg);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .glass,
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.92);
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.06);
+  }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  opacity: 0.5;
+  animation: blob-float 22s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink-2);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-ink);
 }
