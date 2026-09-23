@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { SpeciesTag } from "@/components/ui/SpeciesTag";
+import { PetGallery } from "@/components/pets/PetGallery";
 import { SPECIES } from "@/lib/species";
 import { getAgeLabel } from "@/lib/pet-age";
 import { formatFee, formatSex, formatSize, PUBLIC_PET_STATUSES } from "@/lib/pets";
@@ -35,7 +36,7 @@ export default async function PetProfilePage({ params }: PageProps<"/adopt/[slug
   const supabase = await createClient();
   const { data: pet, error } = await supabase
     .from("pets")
-    .select("*")
+    .select("*, pet_photos(id, path, alt, is_primary, sort_order)")
     .eq("slug", slug)
     .in("status", PUBLIC_PET_STATUSES)
     .maybeSingle();
@@ -80,21 +81,25 @@ export default async function PetProfilePage({ params }: PageProps<"/adopt/[slug
       ) : null}
 
       <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_1fr]">
-        <div className={`relative flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-[28px] sm:min-h-[500px] ${species.photo}`}>
-          <span className="font-display text-4xl font-bold text-ink/70">{pet.name}</span>
-          <span className="text-sm font-bold text-ink/60">Photos coming soon</span>
-          {pet.video_url ? (
-            <a
-              href={pet.video_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass mt-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-ink"
-            >
-              <PlayCircle className="h-4 w-4" strokeWidth={1.8} />
-              Watch video
-            </a>
-          ) : null}
-        </div>
+        {pet.pet_photos.length > 0 ? (
+          <PetGallery petName={pet.name} photos={pet.pet_photos} videoUrl={pet.video_url} />
+        ) : (
+          <div className={`relative flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-[28px] sm:min-h-[500px] ${species.photo}`}>
+            <span className="font-display text-4xl font-bold text-ink/70">{pet.name}</span>
+            <span className="text-sm font-bold text-ink/60">Photos coming soon</span>
+            {pet.video_url ? (
+              <a
+                href={pet.video_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass mt-2 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-ink"
+              >
+                <PlayCircle className="h-4 w-4" strokeWidth={1.8} />
+                Watch video
+              </a>
+            ) : null}
+          </div>
+        )}
 
         <GlassCard strong className="flex flex-col gap-5">
           <div>

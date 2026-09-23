@@ -5,6 +5,8 @@ const STATUS_STYLES = {
   in_review: "bg-cat-tint text-cat",
   approved: "bg-dragon-tint text-dragon",
   declined: "bg-neutral-tint text-ink-2",
+  completed: "bg-dragon-tint text-dragon",
+  withdrawn: "bg-neutral-tint text-ink-2",
 } as const;
 
 const STATUS_LABELS: Record<StatusPillStatus, string> = {
@@ -12,6 +14,8 @@ const STATUS_LABELS: Record<StatusPillStatus, string> = {
   in_review: "In review",
   approved: "Approved",
   declined: "Declined",
+  completed: "Completed",
+  withdrawn: "Withdrawn",
 };
 
 export type StatusPillStatus = keyof typeof STATUS_STYLES;

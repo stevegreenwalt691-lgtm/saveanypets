@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { TagInputDemo } from "./TagInputDemo";
 import { Stepper } from "@/components/ui/Stepper";
 import { StatusPill } from "@/components/ui/StatusPill";
 
@@ -164,6 +165,9 @@ export default function StyleguidePage() {
             <Checkbox label="Good with kids" defaultChecked />
             <Checkbox label="Good with dogs" />
             <Checkbox label="Good with cats" />
+          </div>
+          <div className="mt-5 max-w-md">
+            <TagInputDemo />
           </div>
         </Section>
 
