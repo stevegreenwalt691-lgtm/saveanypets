@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { Accordion } from "@/components/ui/Accordion";
 import { TagInputDemo } from "./TagInputDemo";
 import { Stepper } from "@/components/ui/Stepper";
 import { StatusPill } from "@/components/ui/StatusPill";
@@ -134,6 +135,15 @@ export default function StyleguidePage() {
             <StatusPill status="approved" />
             <StatusPill status="declined" />
           </div>
+        </Section>
+
+        <Section title="Accordion" description="Used for FAQs on /how-it-works">
+          <Accordion
+            items={[
+              { question: "Is there a fee?", answer: "Yes, fees vary by species and cover vet care." },
+              { question: "Do you deliver pets?", answer: "No, adoption is local pickup only." },
+            ]}
+          />
         </Section>
 
         <Section title="Stepper" description="5 step adoption application progress">

@@ -226,6 +226,7 @@ create table site_settings (
   registration_number text,
   opening_hours jsonb,
   fees jsonb,                        -- {"dog": 0, "cat": 0, "bearded_dragon": 0}
+  donation_details text,             -- bank transfer details shown on /get-involved#donate. No online payment, ever.
   updated_at timestamptz not null default now()
 );
 insert into site_settings (id) values (1);
@@ -328,7 +329,12 @@ Path pattern: `pet-photos/{pet_id}/{uuid}.webp`. Resize to max 1600px wide befor
 
 ## 8. Seed data (local and preview only)
 
-`supabase/seed.sql` adds 9 pets (3 dogs, 3 cats, 3 bearded dragons) with status `available`, a few `meet_slots` for the next 7 days and 1 published care guide per species. Never run the seed on production.
+`supabase/seed.sql` adds 9 pets (3 dogs, 3 cats, 3 bearded dragons) with status `available` and a few `meet_slots` for the next 7 days. Never run the seed on production.
+
+Three starter `care_guides` (one per species) ship as a real migration instead of seed data, since
+they are content meant for production too: `20260923163720_care_guides_starter_content.sql`. Each
+body starts with `Reviewed by: [VET OR STAFF NAME]`, a reminder for the client to check them before
+launch.
 
 ## 9. Test checklist for RLS
 

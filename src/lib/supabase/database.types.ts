@@ -393,6 +393,7 @@ export type Database = {
       site_settings: {
         Row: {
           address: string | null
+          donation_details: string | null
           email: string | null
           fees: Json | null
           id: number
@@ -405,6 +406,7 @@ export type Database = {
         }
         Insert: {
           address?: string | null
+          donation_details?: string | null
           email?: string | null
           fees?: Json | null
           id?: number
@@ -417,6 +419,7 @@ export type Database = {
         }
         Update: {
           address?: string | null
+          donation_details?: string | null
           email?: string | null
           fees?: Json | null
           id?: number

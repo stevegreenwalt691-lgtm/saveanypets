@@ -17,7 +17,7 @@ Work one phase at a time. Each phase ends with a Vercel preview deploy the clien
 | 6 | Content pages | 3 days |
 | 7 | Polish: SEO, speed, accessibility | 2 days |
 | 8 | Launch and handover | 1 to 2 days |
-| Later | Donations, alerts, extras | as needed |
+| Later | Alerts and extras | as needed |
 
 Total MVP: about 4 weeks of focused work.
 
@@ -111,9 +111,9 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 5: Admin panel
 
-- [ ] `/admin/login`
-- [ ] `/admin` dashboard: stat cards (available, pending, open applications, adopted this month), newest applications, today's meet-and-greets
-- [ ] `/admin/pets`: table with search and status filter; create and edit form; drag to reorder photos; set primary photo; mark featured; change status
+- [x] `/admin/login`
+- [x] `/admin` dashboard: stat cards (available, pending, open applications, adopted this month), newest applications, today's meet-and-greets
+- [x] `/admin/pets`: table with search and status filter; create and edit form; reorder photos with up/down buttons (no drag library); set primary photo; mark featured; change status
 - [ ] `/admin/applications`: list with status tabs; detail page with all answers, staff notes, Approve / Decline / Mark completed (sends email, updates pet status)
 - [ ] `/admin/meet-greets`: manage slots (create a week of slots at once), see bookings
 - [ ] `/admin/stories` and `/admin/guides`: create, edit, publish toggle, markdown body with preview
@@ -127,13 +127,19 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 6: Content pages
 
-- [ ] `/how-it-works`: steps, fees table per species, what the fee covers, FAQs
-- [ ] `/care-guides` and `/care-guides/[slug]`: filter by species
-- [ ] `/success-stories`
-- [ ] `/get-involved`: foster and volunteer forms, donate section (bank details or Paystack link for now)
-- [ ] `/surrender`: rehoming form for owners
-- [ ] `/about` and `/contact` (map embed, WhatsApp button, hours, registration number)
-- [ ] `/privacy` and `/adoption-terms`
+- [x] `/how-it-works`: steps, fees table per species, what the fee covers, FAQs
+- [x] `/care-guides` and `/care-guides/[slug]`: filter by species, `react-markdown` for `body_md`
+- [x] `/success-stories`
+- [x] `/get-involved`: foster and volunteer forms, donate section (bank transfer details from `site_settings`, no online payment)
+- [x] `/surrender`: rehoming form for owners
+- [x] `/about` and `/contact` (map embed, WhatsApp button, hours, registration number)
+- [x] `/privacy` and `/adoption-terms`
+- [x] `/admin/settings`: shelter details, fees, opening hours, donation details (admin only)
+
+**Sitemap plan** (for `sitemap.ts` in Phase 7): `/`, `/adopt`, `/adopt/[slug]` (one per public pet),
+`/how-it-works`, `/care-guides`, `/care-guides/[slug]` (one per published guide), `/success-stories`,
+`/get-involved`, `/surrender`, `/about`, `/contact`, `/privacy`, `/adoption-terms`. Leave out
+`/favorites`, everything under `/admin`, `/admin/login` and `/styleguide`.
 
 ---
 
@@ -161,7 +167,8 @@ Follow `docs/DATABASE.md`.
 
 ## Later (after MVP)
 
-- Online donations with Paystack (webhook to `donations` table)
+No online donations, ever. Donations are bank transfer only, shown on `/get-involved`.
+
 - New arrival alerts by email or WhatsApp for saved searches
 - "Which pet suits me?" quiz
 - Sponsor a pet (monthly)

@@ -46,7 +46,9 @@ export function ApplicationWizard({
   turnstileSiteKey,
 }: ApplicationWizardProps) {
   const router = useRouter();
-  const honeypotRef = useRef<HTMLInputElement>(null);
+  // Plain state, not a ref: reading a ref inside handleSubmit's callback is flagged as an
+  // unsafe render-time access by the React Compiler.
+  const [honeypotValue, setHoneypotValue] = useState("");
   const [step, setStep] = useState(1);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
@@ -125,7 +127,7 @@ export function ApplicationWizard({
       startTransition(async () => {
         const result = await submitApplication({
           petSlug,
-          hp_field: honeypotRef.current?.value,
+          hp_field: honeypotValue,
           turnstileToken,
           values: data,
         });
@@ -167,10 +169,11 @@ export function ApplicationWizard({
           <input
             id="hp_confirm_blank"
             name="hp_confirm_blank"
-            ref={honeypotRef}
             type="text"
             tabIndex={-1}
             autoComplete="off"
+            value={honeypotValue}
+            onChange={(event) => setHoneypotValue(event.target.value)}
           />
         </div>
 
