@@ -119,3 +119,4 @@ Pet scam sites copy the look of real rescues. We must be clearly different.
 - RLS tested: an anonymous user cannot read or change what they should not
 - No em dashes (`npm run check:copy`)
 - Relevant doc in `docs/` updated if behaviour changed
+- Never use the browser or claude-in-chrome to test unless the user explicitly asks in that message. Verify with lint, typecheck, check:copy and build only. When done, give a short list of manual test steps and stop. Never restart the dev server unless asked.
