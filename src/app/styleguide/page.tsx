@@ -8,6 +8,7 @@ import { Chip } from "@/components/ui/Chip";
 import { SpeciesTag } from "@/components/ui/SpeciesTag";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
+import { Textarea } from "@/components/ui/Textarea";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Stepper } from "@/components/ui/Stepper";
 import { StatusPill } from "@/components/ui/StatusPill";
@@ -154,6 +155,10 @@ export default function StyleguidePage() {
               <option value="cat">Cat</option>
               <option value="bearded_dragon">Bearded Dragon</option>
             </Select>
+          </div>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            <Textarea label="Tell us about your home" placeholder="A quiet apartment with a small garden" />
+            <Textarea label="Reason for adopting" error="Tell us a bit more" />
           </div>
           <div className="mt-5 flex flex-wrap gap-5">
             <Checkbox label="Good with kids" defaultChecked />

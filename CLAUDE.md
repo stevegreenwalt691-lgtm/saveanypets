@@ -91,6 +91,7 @@ docs/
 7. **Images** use `next/image` with Supabase Storage URLs. Always set `alt` (for example "Spike, a 3 year old bearded dragon").
 8. **Full file replacements** when handing code back to the developer, not partial diffs.
 9. Keep components small. If a file passes about 200 lines, split it.
+10. Use Steve Greenwalt / stevegreenwalt691@gmail.com for any owner, author, test or contact details. Never use any other personal name.
 
 ## Copy and content rules
 

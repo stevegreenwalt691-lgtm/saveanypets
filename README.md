@@ -19,7 +19,7 @@ Next.js 16 + Supabase + Vercel, built with Claude Code.
 ## Setup (Windows CMD)
 
 ```cmd
-cd C:\Users\afola\saveanypets
+cd C:\Users\YourName\saveanypets
 npm install
 copy .env.example .env.local
 npm run dev
@@ -42,7 +42,7 @@ git init
 git add .
 git commit -m "chore: scaffold Save Any Pets"
 git branch -M main
-git remote add origin https://github.com/danielafolarin96-dotcom/saveanypets.git
+git remote add origin https://github.com/stevegreenwalt691-lgtm/saveanypets.git
 git push -u origin main
 npx vercel link
 ```

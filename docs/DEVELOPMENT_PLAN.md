@@ -58,7 +58,7 @@ Build from `docs/DESIGN.md` and the "Glass UI" prototype.
 
 - [x] Tokens in `globals.css` (`@theme` block): colours, radii, shadows, fonts (Fraunces + DM Sans via `next/font`)
 - [x] `BlobBackground` (fixed, blurred colour blobs, respects `prefers-reduced-motion`)
-- [ ] UI kit: `GlassCard`, `Button` (primary, dark, outline, ghost), `Chip`, `SpeciesTag`, `Input`, `Select`, `Textarea`, `Checkbox`, `Stepper`, `StatusPill` (built: everything except `Textarea` and `Checkbox`, still to add when the forms in Phase 4 need them)
+- [x] UI kit: `GlassCard`, `Button` (primary, dark, outline, ghost), `Chip`, `SpeciesTag`, `Input`, `Select`, `Textarea`, `Checkbox`, `Stepper`, `StatusPill`
 - [x] `SiteHeader` (sticky glass pill nav, mobile sheet menu), `SiteFooter`
 - [x] A hidden `/styleguide` page showing every component (delete or protect before launch)
 
@@ -97,13 +97,13 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 4: Adoption application
 
-- [ ] `/adopt/[slug]/apply`: 5 step form (About you, Home, Experience, Meet-and-greet, Review)
-- [ ] Species aware questions: reptile experience and UVB setup only for bearded dragons; yard and other dogs for dogs
-- [ ] Progress kept in `sessionStorage` so a refresh does not lose answers
-- [ ] Meet-and-greet slot picker from `meet_slots` (only open, future, not full)
-- [ ] Server action: zod validate, verify Turnstile, insert application, email applicant and staff via Resend
-- [ ] Success page with what happens next and expected reply time
-- [ ] Block applying for `adopted` pets; warn (but allow a backup application) for `pending`
+- [x] `/adopt/[slug]/apply`: 5 step form (About you, Home, Experience, Meet-and-greet, Review)
+- [x] Species aware questions: reptile experience and UVB setup only for bearded dragons; yard and other dogs for dogs
+- [x] Progress kept in `sessionStorage` so a refresh does not lose answers
+- [x] Meet-and-greet slot picker from `meet_slots` (only open, future, not full)
+- [x] Server action: zod validate, verify Turnstile, insert application, email applicant and staff via Resend
+- [x] Success page with what happens next and expected reply time
+- [x] Block applying for `adopted` pets; warn (but allow a backup application) for `pending`
 
 **Done when:** an application submitted on the live preview shows up for staff and both emails arrive.
 

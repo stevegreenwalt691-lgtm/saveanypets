@@ -522,6 +522,20 @@ export type Database = {
     Functions: {
       is_admin: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
+      meet_slot_has_capacity: { Args: { p_slot_id: string }; Returns: boolean }
+      open_meet_slots: {
+        Args: never
+        Returns: {
+          booked: number
+          capacity: number
+          id: string
+          starts_at: string
+        }[]
+      }
+      pet_status_for_slug: {
+        Args: { p_slug: string }
+        Returns: Database["public"]["Enums"]["pet_status"]
+      }
     }
     Enums: {
       application_status:

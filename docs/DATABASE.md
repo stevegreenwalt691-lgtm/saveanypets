@@ -282,6 +282,27 @@ Notes:
 - Slot capacity: check in the server action (count applications per `slot_id`) before inserting. A slot that is full is hidden from the picker.
 - Rate limit and Turnstile run in the server action before the insert.
 
+### Security definer functions (Phase 4)
+
+The `applications` table has no public select policy, so the browser cannot count bookings per slot
+or tell an `adopted` pet apart from one that does not exist. Three `security definer` functions
+expose just enough for the apply flow, added in `20260923104451_application_support.sql`:
+
+```sql
+pet_status_for_slug(p_slug text) returns pet_status
+-- Status of a pet by slug, only for 'available' | 'pending' | 'on_hold' | 'adopted'.
+-- Used to show "this pet has been adopted" instead of a plain 404 (draft pets stay hidden).
+
+open_meet_slots() returns table (id uuid, starts_at timestamptz, capacity int, booked bigint)
+-- Open, future slots that still have room. Full slots are excluded (having count(a.id) < s.capacity).
+
+meet_slot_has_capacity(p_slot_id uuid) returns boolean
+-- Re-checked in the server action right before insert, to close a race between
+-- loading the form and submitting it.
+```
+
+All three are granted `execute` to `anon, authenticated`. Call them with `supabase.rpc(...)`.
+
 ## 7. Storage
 
 | Bucket | Public | Who can write |
