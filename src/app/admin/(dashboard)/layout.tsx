@@ -13,17 +13,18 @@ export default async function AdminDashboardLayout({ children }: LayoutProps<"/a
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name")
+    .select("full_name, role")
     .eq("id", user.id)
     .maybeSingle();
 
   const staffName = profile?.full_name ?? user.email ?? "Staff";
+  const isAdmin = profile?.role === "admin";
 
   return (
     <>
       <BlobBackground soft />
       <div className="mx-auto flex w-full max-w-[1440px] gap-4 px-0 py-4 lg:px-4">
-        <AdminSidebar staffName={staffName} />
+        <AdminSidebar staffName={staffName} isAdmin={isAdmin} />
         <main className="min-w-0 flex-1 px-4 pb-16 lg:px-0 lg:py-0">{children}</main>
       </div>
     </>

@@ -114,11 +114,11 @@ Follow `docs/DATABASE.md`.
 - [x] `/admin/login`
 - [x] `/admin` dashboard: stat cards (available, pending, open applications, adopted this month), newest applications, today's meet-and-greets
 - [x] `/admin/pets`: table with search and status filter; create and edit form; reorder photos with up/down buttons (no drag library); set primary photo; mark featured; change status
-- [ ] `/admin/applications`: list with status tabs; detail page with all answers, staff notes, Approve / Decline / Mark completed (sends email, updates pet status)
-- [ ] `/admin/meet-greets`: manage slots (create a week of slots at once), see bookings
+- [x] `/admin/applications`: list with status tabs and counts; detail page with all answers grouped like the form, staff notes (save on blur), Mark in review / Approve / Decline / Mark completed (sends email; the `applications_sync_pet` trigger updates pet status, the action never touches `pets` directly)
+- [x] `/admin/meet-greets`: upcoming slots with who booked each, open or close a slot, "Create slots" form (date range, times, capacity) to create many at once
 - [ ] `/admin/stories` and `/admin/guides`: create, edit, publish toggle, markdown body with preview
 - [ ] `/admin/people`: foster, volunteer and surrender submissions with CSV export
-- [ ] `/admin/settings`: shelter name, contact details, fees per species, opening hours (from `site_settings`)
+- [x] `/admin/settings`: shelter name, contact details, fees per species, opening hours, donation details (from `site_settings`, admin only)
 - [ ] Roles: `admin` can manage staff and settings, `staff` can do everything else
 
 **Done when:** the client can add a new pet with photos and approve an application without touching code.

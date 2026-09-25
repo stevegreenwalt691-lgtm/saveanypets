@@ -28,17 +28,27 @@ const NAV_LINKS = [
   { href: "/admin/stories", label: "Stories", icon: Heart },
   { href: "/admin/guides", label: "Guides", icon: BookOpen },
   { href: "/admin/people", label: "People", icon: Users },
-  { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
+
+const ADMIN_ONLY_LINK = { href: "/admin/settings", label: "Settings", icon: Settings };
 
 function isLinkActive(pathname: string, href: string) {
   return href === "/admin" ? pathname === "/admin" : pathname.startsWith(href);
 }
 
-function NavLinks({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
+function NavLinks({
+  pathname,
+  isAdmin,
+  onNavigate,
+}: {
+  pathname: string;
+  isAdmin: boolean;
+  onNavigate?: () => void;
+}) {
+  const links = isAdmin ? [...NAV_LINKS, ADMIN_ONLY_LINK] : NAV_LINKS;
   return (
     <nav className="flex flex-1 flex-col gap-1" aria-label="Admin">
-      {NAV_LINKS.map((link) => {
+      {links.map((link) => {
         const active = isLinkActive(pathname, link.href);
         const Icon = link.icon;
         return (
@@ -89,9 +99,10 @@ function SidebarFooter({ onNavigate }: { onNavigate?: () => void }) {
 
 interface AdminSidebarProps {
   staffName: string;
+  isAdmin: boolean;
 }
 
-export function AdminSidebar({ staffName }: AdminSidebarProps) {
+export function AdminSidebar({ staffName, isAdmin }: AdminSidebarProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -102,7 +113,7 @@ export function AdminSidebar({ staffName }: AdminSidebarProps) {
           <p className="font-display text-xl font-bold text-ink">Save Any Pets</p>
           <p className="mt-1 truncate text-sm text-ink-3">{staffName}</p>
         </div>
-        <NavLinks pathname={pathname} />
+        <NavLinks pathname={pathname} isAdmin={isAdmin} />
         <SidebarFooter />
       </aside>
 
@@ -124,7 +135,7 @@ export function AdminSidebar({ staffName }: AdminSidebarProps) {
 
       {menuOpen ? (
         <div className="glass-strong mx-4 mt-3 flex flex-col gap-4 rounded-[28px] p-4 lg:hidden">
-          <NavLinks pathname={pathname} onNavigate={() => setMenuOpen(false)} />
+          <NavLinks pathname={pathname} isAdmin={isAdmin} onNavigate={() => setMenuOpen(false)} />
           <SidebarFooter onNavigate={() => setMenuOpen(false)} />
         </div>
       ) : null}
