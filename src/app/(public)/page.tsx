@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { PET_SUMMARY_COLUMNS, PUBLIC_PET_STATUSES, type PetSummary } from "@/lib/pets";
+import { getSiteSettings } from "@/lib/site-settings";
 import { Hero } from "@/components/home/Hero";
 import { AdoptionSteps } from "@/components/home/AdoptionSteps";
 import { CareGuideCards, type CareGuideSummary } from "@/components/home/CareGuideCards";
 import { GetInvolvedCards } from "@/components/home/GetInvolvedCards";
 import { PetGrid } from "@/components/pets/PetGrid";
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import type { Species } from "@/lib/species";
 
 export default async function Home() {
   const supabase = await createClient();
 
-  const [petCountResult, featuredResult, guidesResult] = await Promise.all([
+  const [petCountResult, featuredResult, guidesResult, settings] = await Promise.all([
     supabase
       .from("pets")
       .select("id", { count: "exact", head: true })
@@ -28,6 +30,7 @@ export default async function Home() {
       .select("slug, species, title, summary")
       .eq("published", true)
       .order("updated_at", { ascending: false }),
+    getSiteSettings(),
   ]);
 
   const petCount = petCountResult.count ?? 0;
@@ -46,6 +49,7 @@ export default async function Home() {
 
   return (
     <main className="mx-auto flex w-full max-w-[1280px] flex-col gap-20 px-4 pb-20 sm:px-14">
+      <OrganizationJsonLd settings={settings} />
       <Hero petCount={petCount} />
 
       <section>

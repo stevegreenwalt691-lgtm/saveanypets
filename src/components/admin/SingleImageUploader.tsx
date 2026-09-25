@@ -59,7 +59,7 @@ export function SingleImageUploader({ label, helpText, imageUrl, onUpload, onDel
 
       {imageUrl ? (
         <div className="relative aspect-[16/9] w-full max-w-sm overflow-hidden rounded-[16px]">
-          <Image src={imageUrl} alt="" fill sizes="400px" className="object-cover" />
+          <Image src={imageUrl} alt={`Current ${label.toLowerCase()}`} fill sizes="400px" className="object-cover" />
         </div>
       ) : (
         <p className="text-sm text-ink-2">No image yet.</p>

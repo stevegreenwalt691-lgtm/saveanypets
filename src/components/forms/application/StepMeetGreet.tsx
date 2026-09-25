@@ -35,7 +35,7 @@ export function StepMeetGreet({ register, errors, groups, selectedSlotId }: Step
                     <label
                       key={slot.id}
                       className={cn(
-                        "cursor-pointer rounded-full px-4 py-2 text-sm font-bold transition-colors",
+                        "cursor-pointer rounded-full px-4 py-2 text-sm font-bold transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand has-[:focus-visible]:ring-offset-2",
                         checked ? "bg-ink text-white" : "glass text-ink hover:bg-white/70",
                       )}
                     >

@@ -22,6 +22,11 @@ export function PetGrid({ pets, columns = 3, emptyMessage }: PetGridProps) {
     );
   }
 
+  const sizes =
+    columns === 4
+      ? "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+      : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
   return (
     <div
       className={cn(
@@ -30,7 +35,7 @@ export function PetGrid({ pets, columns = 3, emptyMessage }: PetGridProps) {
       )}
     >
       {pets.map((pet) => (
-        <PetCard key={pet.id} pet={pet} />
+        <PetCard key={pet.id} pet={pet} sizes={sizes} />
       ))}
     </div>
   );

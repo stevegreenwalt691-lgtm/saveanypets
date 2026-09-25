@@ -10,9 +10,11 @@ import { formatSex, formatSize, getPetPhotoUrl, getPrimaryPhoto, type PetSummary
 
 interface PetCardProps {
   pet: PetSummary;
+  /** Matches the surrounding grid's column count so the browser fetches the right image size. */
+  sizes?: string;
 }
 
-export function PetCard({ pet }: PetCardProps) {
+export function PetCard({ pet, sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" }: PetCardProps) {
   const species = SPECIES[pet.species];
   const size = formatSize(pet.size);
   const meta = [getAgeLabel(pet.birth_date), formatSex(pet.sex), size].filter(Boolean).join(" · ");
@@ -29,7 +31,7 @@ export function PetCard({ pet }: PetCardProps) {
             src={getPetPhotoUrl(photo.path)}
             alt={photo.alt ?? `${pet.name}, a ${species.label.toLowerCase()}`}
             fill
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            sizes={sizes}
             className="object-cover"
           />
         ) : (

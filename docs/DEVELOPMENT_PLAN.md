@@ -116,8 +116,8 @@ Follow `docs/DATABASE.md`.
 - [x] `/admin/pets`: table with search and status filter; create and edit form; reorder photos with up/down buttons (no drag library); set primary photo; mark featured; change status
 - [x] `/admin/applications`: list with status tabs and counts; detail page with all answers grouped like the form, staff notes (save on blur), Mark in review / Approve / Decline / Mark completed (sends email; the `applications_sync_pet` trigger updates pet status, the action never touches `pets` directly)
 - [x] `/admin/meet-greets`: upcoming slots with who booked each, open or close a slot, "Create slots" form (date range, times, capacity) to create many at once
-- [ ] `/admin/stories` and `/admin/guides`: create, edit, publish toggle, markdown body with preview
-- [ ] `/admin/people`: foster, volunteer and surrender submissions with CSV export
+- [x] `/admin/stories` and `/admin/guides`: create, edit, publish toggle, markdown body with preview
+- [x] `/admin/people`: foster, volunteer and surrender submissions with CSV export
 - [x] `/admin/settings`: shelter name, contact details, fees per species, opening hours, donation details (from `site_settings`, admin only)
 - [ ] Roles: `admin` can manage staff and settings, `staff` can do everything else
 
@@ -145,11 +145,12 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 7: Polish
 
-- [ ] SEO: `generateMetadata` per page, per pet Open Graph image (`opengraph-image.tsx`), `sitemap.ts`, `robots.ts`, JSON-LD for the organisation
-- [ ] Speed: `next/image` sizes, Supabase image transforms, ISR (`revalidate`) on public pages, `revalidatePath` after admin edits
-- [ ] Accessibility pass: keyboard, focus, labels, contrast, reduced motion, glass fallback when `backdrop-filter` is not supported
-- [ ] Vercel Analytics and Speed Insights
-- [ ] Error and loading states (`error.tsx`, `loading.tsx`, `not-found.tsx`)
+- [x] SEO: `generateMetadata` per page (dynamic pages read real data, static pages have real titles and descriptions), per pet Open Graph image (`opengraph-image.tsx`, photo or species colour fallback), `sitemap.ts` and `robots.ts` from the sitemap plan below, JSON-LD (`AnimalShelter`) for the organisation on the home page
+- [x] `next/image` `sizes` corrected in `PetCard` (grid column aware), `PetGallery` and the admin `PhotoManager`
+- [ ] Speed: Supabase image transforms, ISR (`revalidate`) on public pages, `revalidatePath` after admin edits
+- [x] Accessibility pass: keyboard reachability, focus rings (including the meet-and-greet slot picker), labels, contrast, glass fallback when `backdrop-filter` is not supported (confirmed working)
+- [x] Vercel Analytics and Speed Insights
+- [x] Error and loading states (`error.tsx`, `loading.tsx`, `not-found.tsx`) at the app root and for `/adopt/[slug]` and `/care-guides/[slug]`
 - [ ] Lighthouse target: 90+ on all four scores for Home, Adopt, Pet profile
 
 ---

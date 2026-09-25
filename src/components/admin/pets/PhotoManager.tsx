@@ -84,7 +84,7 @@ export function PhotoManager({ petId, slug, photos }: PhotoManagerProps) {
                   src={getPetPhotoUrl(photo.path)}
                   alt={photo.alt ?? ""}
                   fill
-                  sizes="240px"
+                  sizes="(min-width: 1024px) 240px, (min-width: 640px) 45vw, 90vw"
                   className="object-cover"
                 />
                 {photo.is_primary ? (

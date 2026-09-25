@@ -63,7 +63,7 @@ export function PetGallery({ petName, photos, videoUrl }: PetGalleryProps) {
                 src={getPetPhotoUrl(photo.path)}
                 alt={photo.alt ?? `${petName}, photo ${index + 1}`}
                 fill
-                sizes="120px"
+                sizes="(min-width: 1024px) 145px, 24vw"
                 className="object-cover"
               />
             </button>
