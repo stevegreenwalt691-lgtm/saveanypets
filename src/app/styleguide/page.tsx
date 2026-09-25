@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { notFound } from "next/navigation";
 import { BlobBackground } from "@/components/layout/BlobBackground";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -36,6 +37,8 @@ function Section({
 }
 
 export default function StyleguidePage() {
+  if (process.env.VERCEL_ENV === "production") notFound();
+
   return (
     <>
       <BlobBackground />

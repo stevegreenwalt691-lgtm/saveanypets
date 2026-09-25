@@ -1,5 +1,6 @@
 import { SPECIES } from "@/lib/species";
 import { formatFee } from "@/lib/pets";
+import { SITE_URL } from "@/lib/site-url";
 import type { Species } from "@/lib/species";
 
 interface ApplicationEmailInput {
@@ -47,7 +48,7 @@ export function staffAlertEmail(input: ApplicationEmailInput & { applicantEmail:
       `Phone: ${input.applicantPhone}`,
       `Requested meet and greet: ${input.slotLabel}`,
       "",
-      "Open the admin panel to review the full application and respond.",
+      `Review and respond: ${SITE_URL}/admin/applications`,
     ].join("\n"),
   };
 }

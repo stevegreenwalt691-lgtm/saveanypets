@@ -336,6 +336,10 @@ they are content meant for production too: `20260923163720_care_guides_starter_c
 body starts with `Reviewed by: [VET OR STAFF NAME]`, a reminder for the client to check them before
 launch.
 
+At launch, run `supabase/remove-seed-data.sql` once against production (SQL editor, not the CLI)
+to remove the 9 sample pets. It is not run automatically by `db push` or `db reset`. It leaves the
+starter `care_guides` and any real `success_stories` alone, see the comments in that file.
+
 ## 9. Test checklist for RLS
 
 Run in the SQL editor using "Run as anon":

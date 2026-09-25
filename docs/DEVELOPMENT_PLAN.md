@@ -157,11 +157,15 @@ Follow `docs/DATABASE.md`.
 
 ## Phase 8: Launch and handover
 
+- [x] `NEXT_PUBLIC_SITE_URL` (via `src/lib/site-url.ts`) confirmed as the only source for the site's own URL in `sitemap.ts`, `robots.ts`, the organisation JSON-LD, the pet Open Graph image (via `metadataBase`) and the staff notification emails, no hardcoded domain anywhere
+- [x] `src/proxy.ts` confirmed: redirects to `/admin/login` for anyone not signed in or not `is_staff()` on every `/admin/*` route; `/styleguide` now returns a 404 when `VERCEL_ENV=production` (still visible in dev and previews)
+- [x] Turnstile and a honeypot field confirmed on every public form (applications, foster/volunteer, surrender), both checked on the server before anything is saved
+- [x] `supabase/remove-seed-data.sql` written: removes the 9 sample pets (and any test applications against them), not run automatically, run it yourself once against production
 - [ ] Connect the client domain on Vercel, force HTTPS
 - [ ] Supabase: enable Point in Time Recovery or daily backups on the paid plan, set auth email templates, SMTP via Resend
-- [ ] Remove seed pets, add the client's real pets
-- [ ] Create staff accounts, walk the client through the admin panel
-- [ ] Short handover doc: how to add a pet, review an application, publish a story
+- [ ] Run `supabase/remove-seed-data.sql` against production, add the client's real pets, review the 3 starter care guides
+- [ ] Create staff accounts in Supabase Auth (with a `profiles` row for each), walk the client through the admin panel
+- [x] Handover doc (`docs/HANDOVER.md`): logging in, adding a pet with photos, reviewing and approving an application, creating meet-and-greet slots, publishing a success story or care guide, updating site settings
 - [ ] Monitor for one week: form spam, errors in Vercel logs
 
 ---

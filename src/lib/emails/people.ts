@@ -1,4 +1,5 @@
 import { SPECIES } from "@/lib/species";
+import { SITE_URL } from "@/lib/site-url";
 import type { Species } from "@/lib/species";
 import type { SignupType } from "@/lib/validation/people-signup";
 
@@ -24,7 +25,7 @@ export function staffSignupAlertEmail(input: {
         : null,
       input.message ? `Message: ${input.message}` : null,
       "",
-      "Open the admin panel to follow up.",
+      `Follow up: ${SITE_URL}/admin/people?tab=${input.type}`,
     ]
       .filter(Boolean)
       .join("\n"),
@@ -54,7 +55,7 @@ export function staffSurrenderAlertEmail(input: {
       "",
       `Reason: ${input.reason}`,
       "",
-      "Open the admin panel to follow up.",
+      `Follow up: ${SITE_URL}/admin/people?tab=surrender`,
     ]
       .filter(Boolean)
       .join("\n"),
